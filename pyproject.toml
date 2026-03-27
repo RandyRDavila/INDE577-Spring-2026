@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rice_ml"
+version = "0.1.0"
+description = "Machine learning package for INDE577"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Randy Davila" }
+]
+license = { file = "LICENSE" }
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "matplotlib>=3.8",
+  "scipy>=1.12"
+]
+
+[project.optional-dependencies]
+dev = [
+  "black>=24.0",
+  "ruff>=0.3",
+  "ipykernel>=6.29"
+]
+test = [
+  "pytest>=8.0",
+  "pytest-cov>=4.1"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra -q --doctest-modules"
